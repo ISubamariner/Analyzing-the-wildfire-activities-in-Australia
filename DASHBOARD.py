@@ -16,11 +16,11 @@ df =  pd.read_csv('https://cf-courses-data.s3.us.cloud-object-storage.appdomain.
 df['Month'] = pd.to_datetime(df['Date']).dt.month_name() #used for the names of the months
 df['Year'] = pd.to_datetime(df['Date']).dt.year
 #Layout Section of Dash
-#Task 1 Add the Title to the Dashboard
+#Title of the Dashboard
 app.layout = html.Div(children=[html.H1('Australia Wildfire Dashboard', 
                                 style={'textAlign': 'center', 'color': '#503D36',
                                 'font-size': 26}),
-# TASK 2: Add the radio items and a dropdown right below the first inner division
+# Radio items and a Dropdown right below the first inner division
      #outer division starts
      html.Div([
                    # First inner divsion for  adding dropdown helper text for Selected Drive wheels
@@ -40,8 +40,8 @@ app.layout = html.Div(children=[html.H1('Australia Wildfire Dashboard',
                             html.H2('Select Year:', style={'margin-right': '2em'}),
                         dcc.Dropdown(df.Year.unique(), value = 2005,id='year')
                     ]),
-#TASK 3: Add two empty divisions for output inside the next inner division. 
-         #Second Inner division for adding 2 inner divisions for 2 output graphs
+
+         #2 inner divisions for 2 output graphs
                     html.Div([
                 
                         html.Div([ ], id='plot1'),
@@ -51,13 +51,13 @@ app.layout = html.Div(children=[html.H1('Australia Wildfire Dashboard',
     #outer division ends
 ])
 #layout ends
-#TASK 4: Add the Ouput and input components inside the app.callback decorator.
+#Ouput and input components inside the app.callback decorator.
 #Place to add @app.callback Decorator
 @app.callback([Output(component_id='plot1', component_property='children'),
                Output(component_id='plot2', component_property='children')],
                [Input(component_id='region', component_property='value'),
                 Input(component_id='year', component_property='value')])
-#TASK 5: Add the callback function.   
+#Callback function.   
 #Place to define the callback function .
 def reg_year_display(input_region,input_year):  
     #data
